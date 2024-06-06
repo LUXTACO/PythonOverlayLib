@@ -40,7 +40,7 @@ In this example, the callback function returns a list containing a single circle
 To install the Overlay Library, you can use pip:
 
 ```bash
-pip install python-overlay-lib
+pip install PythonOverlayLib
 ```
 
 ## Contributing
