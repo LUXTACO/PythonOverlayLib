@@ -5,5 +5,59 @@ Summary: Python library designed to create customizable overlays for desktop app
 Home-page: https://github.com/LUXTACO/PythonOverlayLib
 Author: Takkeshi
 Author-email: tacomastabusiness@gmail.com
+Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: PyQt5>=5.15.4
+
+# PythonOverlayLib
+
+The Overlay Library is a Python library designed to create customizable overlays for desktop applications. It uses PyQt5 to draw shapes such as circles, rectangles, and lines on a transparent window that stays on top of other windows. This can be useful for a variety of applications, such as highlighting specific areas of the screen, drawing annotations, or creating custom HUDs for games.
+
+## Features
+
+- **Customizable Shapes**: The library supports drawing of various shapes including circles, rectangles, and lines. Each shape can be customized with its own position, size, color, and thickness.
+
+- **Transparent Overlay**: The overlay is completely transparent, allowing you to see the underlying windows while still displaying the drawn shapes.
+
+- **Always on Top**: The overlay window stays on top of other windows, ensuring that the drawn shapes are always visible.
+
+- **Dynamic Drawing**: The library supports dynamic drawing through a callback function. This function is called at a regular interval and should return a list of shapes to be drawn. This allows the overlay to be updated dynamically based on your application's state.
+
+## Usage
+
+To use the Overlay Library, you need to create an instance of the [`Overlay`](https://github.com/LUXTACO/PythonOverlayLib/blob/main/overlay_lib/overlay.py#L48) class, passing a callback function that returns a list of shapes to be drawn. You can then call the [`spawn`](https://github.com/LUXTACO/PythonOverlayLib/blob/main/overlay_lib/overlay.py#L54) method to create the overlay window.
+
+Here's a basic example:
+
+```python
+import overlay_lib
+from overlay_lib import Vector2D, RgbaTuple, DrawCircle
+
+def callback():
+    return [DrawCircle(Vector2D(960, 540), 10, RgbaTuple(255, 255, 255, 255), 1)]
+
+overlay = overlay_lib.Overlay(
+    drawlistCallback=callback,
+    refreshTimeout=1
+)
+
+overlay.spawn()
+```
+
+In this example, the callback function returns a list containing a single circle, which is drawn at the center of the screen. The `refreshTimeout` parameter determines how often the callback function is called, in milliseconds.
+
+## Installation
+
+To install the Overlay Library, you can use pip:
+
+```bash
+pip install python-overlay-lib
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request.
+
+## License
+
+This project is licensed under the terms of the Apache License 2.0 license.
