@@ -14,7 +14,7 @@ The Overlay Library is a Python library designed to create customizable overlays
 
 ## Usage
 
-To use the Overlay Library, you need to create an instance of the [`Overlay`]() class, passing a callback function that returns a list of shapes to be drawn. You can then call the [`spawn`]() method to create the overlay window.
+To use the Overlay Library, you need to create an instance of the [`Overlay`](https://github.com/LUXTACO/PythonOverlayLib/blob/main/overlay_lib/overlay.py#L48) class, passing a callback function that returns a list of shapes to be drawn. You can then call the [`spawn`](https://github.com/LUXTACO/PythonOverlayLib/blob/main/overlay_lib/overlay.py#L54) method to create the overlay window.
 
 Here's a basic example:
 
