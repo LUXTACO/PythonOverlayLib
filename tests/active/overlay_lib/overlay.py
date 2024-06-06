@@ -25,22 +25,19 @@ class ChildWindow(QtWidgets.QDialog):
 
 class MainWindow(QtWidgets.QMainWindow):
     
-    def __init__(self, parent=None, customSystemMetrics:list=None, drawlistCallback:Callable=None, guiCallback:Callable=None, refreshTimeout:int=1):
+    def __init__(self, parent=None, customSystemMetrics:list=None, drawlistCallback:Callable=None, refreshTimeout:int=1):
         super(MainWindow, self).__init__(parent)
         self.setWindowTitle("Overlay")
         self.setGeometry(0, 0, (user32.GetSystemMetrics(0) if not customSystemMetrics else customSystemMetrics[0]), (user32.GetSystemMetrics(1) if not customSystemMetrics else customSystemMetrics[1]))
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowTransparentForInput | QtCore.Qt.WindowStaysOnTopHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         
-        if guiCallback:
-            self.guiCallback = guiCallback
-            self.guiCallback()
-        
         self.drawlist = []
         self.drawlistCallback = drawlistCallback
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.update_drawlist)
         self.timer.start(refreshTimeout)
+        self.drawGui()
 
     def update_drawlist(self):
         self.drawlist = self.drawlistCallback()
@@ -63,6 +60,11 @@ class MainWindow(QtWidgets.QMainWindow):
                 painter.setFont(QtGui.QFont(item.font, item.size))
                 painter.drawText(item.coords.x, item.coords.y, item.text)
         painter.end()
+        
+    def drawGui(self):
+        # Create a child window
+        self.childWindow = ChildWindow(self)
+        self.childWindow.show()
  
 class Overlay:
     
