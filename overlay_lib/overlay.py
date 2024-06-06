@@ -49,8 +49,8 @@ class Overlay:
     
     def __init__(self, customSystemMetrics=None, drawlistCallback:Callable=None, refreshTimeout:int=1): 
         self.app = QtWidgets.QApplication([])
-        self.window = MainWindow(customSystemMetrics=customSystemMetrics, drawlistCallback=drawlistCallback, refreshTimeout=refreshTimeout)
+        self.overlay = MainWindow(customSystemMetrics=customSystemMetrics, drawlistCallback=drawlistCallback, refreshTimeout=refreshTimeout)
     
     def spawn(self):
-        self.window.show()
+        self.overlay.show()
         self.app.exec_()
