@@ -17,7 +17,7 @@ def callback():
     return [
         DrawRect(Vector2D(mouse_pos[0], mouse_pos[1]), 300, 500, RgbaTuple(255, 255, 255, 255), 2),
         DrawCircle(Vector2D(mouse_pos[0], mouse_pos[1]), 200, RgbaTuple(255, 255, 255, 255), 2),
-        DrawText(Vector2D(mouse_pos[0], mouse_pos[1]-10), 15, "Nigger Hook on top", "Arial", RgbaTuple(255, 255, 255, 255), 2),
+        DrawText(Vector2D(mouse_pos[0], mouse_pos[1]-10), 15, "Hook", "Arial", RgbaTuple(255, 255, 255, 255), 2),
         DrawLine(Vector2D(960, 540), Vector2D(mouse_pos[0]+150, mouse_pos[1]+250), RgbaTuple(255, 255, 255, 255), 2)
     ]
 
