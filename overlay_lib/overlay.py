@@ -8,21 +8,6 @@ from PyQt5.QtGui import QPainter, QPen, QColor
 
 user32 = ctypes.WinDLL('user32.dll')
 
-class ChildWindow(QtWidgets.QDialog):
-    def __init__(self, parent=None):
-        super(ChildWindow, self).__init__(parent)
-
-        # Set the window properties
-        self.setGeometry(50, 50, 200, 200)
-
-        # Create a button in the child window
-        self.button = QtWidgets.QPushButton('Click me', self)
-        self.button.move(50, 50)
-
-        # Create a label in the child window
-        self.label = QtWidgets.QLabel('Hello, world!', self)
-        self.label.move(100, 100)
-
 class MainWindow(QtWidgets.QMainWindow):
     
     def __init__(self, parent=None, customSystemMetrics:list=None, drawlistCallback:Callable=None, guiCallback:Callable=None, refreshTimeout:int=1):
