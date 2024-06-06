@@ -5,7 +5,6 @@ from typing import Callable, Any
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import QPoint, Qt
 from PyQt5.QtGui import QPainter, QPen, QColor
-from imgui.integrations.qt import QImGuiBridge
 
 user32 = ctypes.WinDLL('user32.dll')
 
@@ -23,7 +22,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.timer = QtCore.QTimer(self)
         self.timer.timeout.connect(self.update_drawlist)
         self.timer.start(refreshTimeout)
-        self.bridge = QImGuiBridge(self)
 
     def update_drawlist(self):
         self.drawlist = self.drawlistCallback()
@@ -45,15 +43,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 painter.setPen(QtGui.QPen(QtGui.QColor(item.color.r, item.color.g, item.color.b, item.color.a), item.thickness))
                 painter.setFont(QtGui.QFont(item.font, item.size))
                 painter.drawText(item.coords.x, item.coords.y, item.text)
-                
-        self.bridge.paint()
         painter.end()
-    
-    def resizeEvent(self, event):
-        self.bridge.resize(event.size().width(), event.size().height())
-
-    def closeEvent(self, event):
-        self.bridge.shutdown()
         
 class Overlay:
     
