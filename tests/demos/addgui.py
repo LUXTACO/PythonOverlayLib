@@ -21,10 +21,10 @@ def callback():
     return [DrawCircle(Vector2D(960, 540), 10, RgbaTuple(255, 255, 255, 255), 1)]
 
 def callback2():
-    child = ChildWindow()
-    child.show
+    childWindow = ChildWindow(self)
+    childWindow.show()
     
-    return child
+    return childWindow
 
 overlay = overlay_lib.Overlay(
     drawlistCallback=callback,
