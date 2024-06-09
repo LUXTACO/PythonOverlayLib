@@ -16,19 +16,15 @@ class ChildWindow(QtWidgets.QDialog):
         # Create a label in the child window
         self.label = QtWidgets.QLabel('Hello, world!', self)
         self.label.move(100, 100)
+        
+        self.show()
 
 def callback():
     return [DrawCircle(Vector2D(960, 540), 10, RgbaTuple(255, 255, 255, 255), 1)]
 
-def callback2():
-    childWindow = ChildWindow(self)
-    childWindow.show()
-    
-    return childWindow
-
 overlay = overlay_lib.Overlay(
     drawlistCallback=callback,
-    guiCallback=callback2,
+    guiCallback=ChildWindow,
     refreshTimeout=1
 )
 

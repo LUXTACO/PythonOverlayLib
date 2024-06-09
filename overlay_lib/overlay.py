@@ -10,16 +10,12 @@ user32 = ctypes.WinDLL('user32.dll')
 
 class MainWindow(QtWidgets.QMainWindow):
     
-    def __init__(self, parent=None, customSystemMetrics:list=None, drawlistCallback:Callable=None, guiCallback:Callable=None, refreshTimeout:int=1):
+    def __init__(self, parent=None, customSystemMetrics:list=None, drawlistCallback:Callable=None, refreshTimeout:int=1):
         super(MainWindow, self).__init__(parent)
         self.setWindowTitle("Overlay")
         self.setGeometry(0, 0, (user32.GetSystemMetrics(0) if not customSystemMetrics else customSystemMetrics[0]), (user32.GetSystemMetrics(1) if not customSystemMetrics else customSystemMetrics[1]))
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowTransparentForInput | QtCore.Qt.WindowStaysOnTopHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        
-        if guiCallback:
-            self.guiCallback = guiCallback
-            self.guiCallback()
         
         self.drawlist = []
         self.drawlistCallback = drawlistCallback
@@ -51,10 +47,13 @@ class MainWindow(QtWidgets.QMainWindow):
  
 class Overlay:
     
-    def __init__(self, customSystemMetrics=None, drawlistCallback:Callable=None, guiCallback:Callable=None, refreshTimeout:int=1): 
+    def __init__(self, customSystemMetrics=None, drawlistCallback:Callable=None, guiClass:Callable=None, refreshTimeout:int=1): 
         self.app = QtWidgets.QApplication([])
         self.overlay = MainWindow(customSystemMetrics=customSystemMetrics, drawlistCallback=drawlistCallback, refreshTimeout=refreshTimeout)
-    
+        
+        if guiCallback:
+            self.gui = guiClass
+        
     def spawn(self):
         self.overlay.show()
         self.app.exec_()
