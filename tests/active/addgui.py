@@ -21,7 +21,7 @@ class ChildWindow(QtWidgets.QDialog):
 
 def callback():
     return [
-        FlDrawRect(Vector2D(960, 540), 200, 200, RgbaGradient(RgbaColor(255, 255, 0, 10), RgbaColor(255, 0, 255, 40)), RgbaColor(255, 255, 255, 255), 1)
+        FlDrawRect(Vector2D(960, 540), 200, 200, RgbaGradient(RgbaColor(255, 255, 0, 10), RgbaColor(255, 0, 255, 40)), RgbaColor(255, 0, 255, 255), 1)
     ]
 
 overlay = overlay_lib.Overlay(
