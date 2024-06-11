@@ -20,10 +20,10 @@ Here's a basic example:
 
 ```python
 import overlay_lib
-from overlay_lib import Vector2D, RgbaTuple, DrawCircle
+from overlay_lib import Vector2D, RgbaColor, DrawCircle
 
 def callback():
-    return [DrawCircle(Vector2D(960, 540), 10, RgbaTuple(255, 255, 255, 255), 1)]
+    return [DrawCircle(Vector2D(960, 540), 10, RgbaColor(255, 255, 255, 255), 1)]
 
 overlay = overlay_lib.Overlay(
     drawlistCallback=callback,
