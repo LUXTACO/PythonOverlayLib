@@ -8,9 +8,19 @@ class ChildWindow(QtWidgets.QDialog):
         
         self.setWindowTitle("GuiTest")
         self.setGeometry(0, 0, 1000, 600)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
         self.setStyleSheet("background-color: rgba(255, 255, 255, 10);")
         
+        self.isShowing = True
+    
+    def keyPressEvent(self, event):
+        if event.key() == QtCore.Qt.Key_Insert and self.isShowing:
+            self.setWindowOpacity(0)
+        elif event.key() == QtCore.Qt.Key_Insert and not self.isShowing:
+            self.setWindowOpacity(1)
+            
+        self.isShowing = not self.isShowing
+    
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
 
