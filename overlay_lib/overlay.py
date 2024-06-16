@@ -4,7 +4,7 @@ from PyQt5 import QtGui
 from typing import Callable, Any
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import QPoint, Qt
-from PyQt5.QtGui import QPainter, QPen, QColor
+from PyQt5.QtGui import QPainter, QPen, QColor, QImage
 
 user32 = ctypes.WinDLL('user32.dll')
 
@@ -68,6 +68,9 @@ class MainWindow(QtWidgets.QMainWindow):
                 painter.setPen(QtGui.QPen(QtGui.QColor(item.color.r, item.color.g, item.color.b, item.color.a), item.thickness))
                 painter.setFont(QtGui.QFont(item.font, item.size))
                 painter.drawText(item.coords.x, item.coords.y, item.text)
+            elif isinstance(item, DrawImage):
+                image = QImage(item.image_path)
+                painter.drawImage(item.coords.x, item.coords.y, image, item.sx, item.sy, item.sw, item.sh)
         painter.end()
  
 class Overlay:
