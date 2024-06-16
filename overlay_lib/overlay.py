@@ -70,7 +70,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 painter.drawText(item.coords.x, item.coords.y, item.text)
             elif isinstance(item, DrawImage):
                 image = QImage(item.image_path)
-                painter.drawImage(item.coords.x, item.coords.y, image, item.sx, item.sy, item.sw, item.sh)
+                painter.drawImage(item.coords.x, item.coords.y, image, item.image_position.x, item.image_position.y, item.image_size.w, item.image_size.h)
         painter.end()
  
 class Overlay:

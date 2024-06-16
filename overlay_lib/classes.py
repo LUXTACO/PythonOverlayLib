@@ -19,6 +19,11 @@ class Vector2D:
     x: int
     y: int
 
+@dataclass    
+class Size2D: 
+    w: int
+    h: int
+
 #? FlDraw Dataclasses
 
 @dataclass
@@ -77,7 +82,5 @@ class DrawText:
 class DrawImage:
     coords: Vector2D
     image_path: str
-    sx: int = 0
-    sy: int = 0
-    sw: int = 0
-    sh: int = 0
+    image_size: Size2D
+    image_position: Vector2D
