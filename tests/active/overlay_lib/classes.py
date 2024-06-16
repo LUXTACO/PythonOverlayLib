@@ -72,3 +72,12 @@ class DrawText:
     font: str
     color: RgbaColor
     thickness: int
+
+@dataclass
+class DrawImage:
+    coords: Vector2D
+    image_path: str
+    sx: int = 0
+    sy: int = 0
+    sw: int = 0
+    sh: int = 0
