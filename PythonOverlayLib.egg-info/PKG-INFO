@@ -1,10 +1,11 @@
 Metadata-Version: 2.1
 Name: PythonOverlayLib
-Version: 1.0
+Version: 1.1
 Summary: Python library designed to create customizable overlays for desktop applications. It uses PyQt5 to draw shapes such as circles, rectangles, and lines on a transparent window that stays on top of other windows.
 Home-page: https://github.com/LUXTACO/PythonOverlayLib
 Author: Takkeshi
 Author-email: tacomastabusiness@gmail.com
+Maintainer: Takkeshi, akazdayo
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: PyQt5>=5.15.4
@@ -31,10 +32,10 @@ Here's a basic example:
 
 ```python
 import overlay_lib
-from overlay_lib import Vector2D, RgbaTuple, DrawCircle
+from overlay_lib import Vector2D, RgbaColor, SkDrawCircle
 
 def callback():
-    return [DrawCircle(Vector2D(960, 540), 10, RgbaTuple(255, 255, 255, 255), 1)]
+    return [SkDrawCircle(Vector2D(960, 540), 10, RgbaColor(255, 255, 255, 255), 1)]
 
 overlay = overlay_lib.Overlay(
     drawlistCallback=callback,

@@ -19,6 +19,11 @@ class Vector2D:
     x: int
     y: int
 
+@dataclass    
+class Size2D: 
+    w: int
+    h: int
+
 #? FlDraw Dataclasses
 
 @dataclass
@@ -72,3 +77,10 @@ class DrawText:
     font: str
     color: RgbaColor
     thickness: int
+
+@dataclass
+class DrawImage:
+    coords: Vector2D
+    image_path: str
+    image_size: Size2D
+    image_position: Vector2D
