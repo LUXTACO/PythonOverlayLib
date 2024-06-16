@@ -5,7 +5,7 @@ from PyQt5 import QtWidgets, QtCore
 
 def callback():
     return [
-        DrawImage(Vector2D(0, 0), "./img.png"),
+        DrawImage(Vector2D(0, 0), "./img.png", Vector2D(100, 20), Size2D(100, 100)),
     ]
 
 overlay = overlay_lib.Overlay(
