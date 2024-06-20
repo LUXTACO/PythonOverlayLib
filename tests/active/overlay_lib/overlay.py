@@ -75,11 +75,11 @@ class MainWindow(QtWidgets.QMainWindow):
  
 class Overlay:
     
-    def __init__(self, customSystemMetrics=None, drawlistCallback:Callable=None, guiWindow:Callable=None, refreshTimeout:int=1): 
+    def __init__(self, customSystemMetrics=None, drawlistCallback:Callable=None, guiWindow:Callable=None, guiWindowArgs=None, refreshTimeout:int=1): 
         self.app = QtWidgets.QApplication([])
         self.overlay = MainWindow(customSystemMetrics=customSystemMetrics, drawlistCallback=drawlistCallback, refreshTimeout=refreshTimeout)
         if guiWindow is not None:
-            self.gui = guiWindow()
+            self.gui = guiWindow(guiWindowArgs)
         else:
             self.gui = None
         
