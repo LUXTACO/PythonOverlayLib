@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+PythonOverlayLib.egg-info/PKG-INFO
+PythonOverlayLib.egg-info/SOURCES.txt
+PythonOverlayLib.egg-info/dependency_links.txt
+PythonOverlayLib.egg-info/requires.txt
+PythonOverlayLib.egg-info/top_level.txt
+overlay_lib/__init__.py
+overlay_lib/classes.py
+overlay_lib/overlay.py
